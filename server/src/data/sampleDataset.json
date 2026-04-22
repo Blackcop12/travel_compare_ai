@@ -1,0 +1,98 @@
+[
+  {
+    "intent": "food",
+    "name": "Vada Pav",
+    "platform": "Swiggy",
+    "price": 114,
+    "rating": 4.3,
+    "etaMinutes": 9
+  },
+  {
+    "intent": "food",
+    "name": "Vada Pav",
+    "platform": "Zomato",
+    "price": 119,
+    "rating": 4.4,
+    "etaMinutes": 10
+  },
+  {
+    "intent": "food",
+    "name": "Veg Burger",
+    "platform": "Swiggy",
+    "price": 142,
+    "rating": 4.4,
+    "etaMinutes": 10
+  },
+  {
+    "intent": "shopping",
+    "name": "Laptop i5 16GB",
+    "platform": "Meesho",
+    "price": 56690,
+    "rating": 4.0,
+    "etaMinutes": 1550
+  },
+  {
+    "intent": "shopping",
+    "name": "Laptop i5 16GB",
+    "platform": "Flipkart",
+    "price": 57499,
+    "rating": 4.3,
+    "etaMinutes": 1320
+  },
+  {
+    "intent": "shopping",
+    "name": "Laptop i5 16GB",
+    "platform": "Amazon",
+    "price": 58999,
+    "rating": 4.4,
+    "etaMinutes": 1440
+  },
+  {
+    "intent": "shopping",
+    "name": "Sony Headphones",
+    "platform": "Meesho",
+    "price": 7499,
+    "rating": 4.0,
+    "etaMinutes": 1820
+  },
+  {
+    "intent": "shopping",
+    "name": "Sony Headphones",
+    "platform": "Flipkart",
+    "price": 7699,
+    "rating": 4.4,
+    "etaMinutes": 1340
+  },
+  {
+    "intent": "shopping",
+    "name": "Sony Headphones",
+    "platform": "Amazon",
+    "price": 7999,
+    "rating": 4.5,
+    "etaMinutes": 1480
+  },
+  {
+    "intent": "ride",
+    "name": "Cab from Pune to Mumbai",
+    "platform": "Rapido",
+    "price": 2050,
+    "rating": 4.3,
+    "etaMinutes": 98
+  },
+  {
+    "intent": "ride",
+    "name": "Cab from Pune to Mumbai",
+    "platform": "Ola",
+    "price": 2160,
+    "rating": 4.4,
+    "etaMinutes": 102
+  },
+  {
+    "intent": "ride",
+    "name": "Cab from Pune to Mumbai",
+    "platform": "Uber",
+    "price": 2280,
+    "rating": 4.6,
+    "etaMinutes": 95
+  }
+]

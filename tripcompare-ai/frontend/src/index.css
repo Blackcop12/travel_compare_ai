@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #ffffff;
+  background-color: #060707;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(16, 185, 129, 0.16), transparent 32%),
+    radial-gradient(circle at 88% 8%, rgba(52, 211, 153, 0.12), transparent 34%),
+    linear-gradient(170deg, #050606 0%, #0a0d0c 46%, #080a09 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: rgba(14, 16, 16, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  box-shadow: 0 20px 55px -34px rgba(16, 185, 129, 0.28);
+}
+
+.fade-in {
+  animation: fadeIn 500ms ease-out both;
+}
+
+.fade-pop {
+  animation: popIn 240ms ease-out both;
+}
+
+.card-rise {
+  animation: riseIn 320ms ease-out both;
+}
+
+.hero-panel {
+  background:
+    radial-gradient(circle at 4% 4%, rgba(16, 185, 129, 0.2), transparent 35%),
+    radial-gradient(circle at 92% 16%, rgba(5, 150, 105, 0.22), transparent 34%),
+    linear-gradient(140deg, rgba(10, 14, 12, 0.98), rgba(10, 12, 12, 0.92));
+}
+
+.scroll-pane {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 185, 129, 0.85) rgba(16, 20, 20, 0.75);
+}
+
+.scroll-pane::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-pane::-webkit-scrollbar-track {
+  background: rgba(16, 20, 20, 0.75);
+}
+
+.scroll-pane::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.85);
+  border-radius: 999px;
+}
+
+.floating-text {
+  position: absolute;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(16, 22, 20, 0.9);
+  border: 1px solid rgba(52, 211, 153, 0.34);
+  color: #6ee7b7;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: floatY 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-text.delay-1 {
+  animation-delay: 0.8s;
+}
+
+.floating-text.delay-2 {
+  animation-delay: 1.6s;
+}
+
+.travel-photo {
+  background-size: cover;
+  background-position: center;
+  min-height: 330px;
+}
+
+.car-runner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+  color: #34d399;
+  animation: driveAcross 2s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes driveAcross {
+  0% {
+    transform: translateX(-8%);
+  }
+  100% {
+    transform: translateX(260px);
+  }
+}
