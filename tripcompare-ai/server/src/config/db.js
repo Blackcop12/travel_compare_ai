@@ -12,6 +12,20 @@ const normalizeMongoUri = (value) => {
     .replace(/^['\"]|['\"]$/g, "");
 };
 
+const ensureAuthSource = (uri, defaultAuthSource = "admin") => {
+  if (!uri || !uri.startsWith("mongodb")) return uri;
+  if (/([?&])authSource=/i.test(uri)) return uri;
+
+  const separator = uri.includes("?") ? "&" : "?";
+  return `${uri}${separator}authSource=${defaultAuthSource}`;
+};
+
+const shouldUseFallback = (error) => {
+  const isProduction = process.env.NODE_ENV === "production";
+  const isAuthError = /auth|Authentication failed|bad auth/i.test(error?.message || "");
+  return !isProduction && !isAuthError;
+};
+
 const connectPrimaryMongo = async (uri) => {
   await mongoose.connect(uri, {
     serverSelectionTimeoutMS: 5000,
@@ -27,19 +41,25 @@ const connectFallbackMongo = async () => {
 };
 
 const connectDB = async () => {
-  const uri = normalizeMongoUri(process.env.MONGO_URI);
+  const uri = ensureAuthSource(
+    normalizeMongoUri(process.env.MONGO_URI),
+    process.env.MONGO_AUTH_SOURCE || "admin"
+  );
 
   if (!uri) {
-    console.warn("MONGO_URI missing. Using in-memory MongoDB fallback.");
-    await connectFallbackMongo();
-    return;
+    throw new Error("MONGO_URI is missing in environment variables.");
   }
 
   try {
     await connectPrimaryMongo(uri);
   } catch (error) {
-    console.warn("Primary MongoDB not reachable. Using in-memory MongoDB fallback.");
     console.warn("MongoDB error:", error.message);
+
+    if (!shouldUseFallback(error)) {
+      throw new Error(`Primary MongoDB connection failed: ${error.message}`);
+    }
+
+    console.warn("Primary MongoDB not reachable. Using in-memory MongoDB fallback.");
     await connectFallbackMongo();
   }
 };
