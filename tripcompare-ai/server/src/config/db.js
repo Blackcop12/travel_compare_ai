@@ -3,6 +3,15 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 
 let memoryServer;
 
+const normalizeMongoUri = (value) => {
+  if (!value) return "";
+
+  return value
+    .trim()
+    .replace(/^MONGO_URI\s*=\s*/i, "")
+    .replace(/^['\"]|['\"]$/g, "");
+};
+
 const connectPrimaryMongo = async (uri) => {
   await mongoose.connect(uri, {
     serverSelectionTimeoutMS: 5000,
@@ -18,7 +27,7 @@ const connectFallbackMongo = async () => {
 };
 
 const connectDB = async () => {
-  const uri = process.env.MONGO_URI;
+  const uri = normalizeMongoUri(process.env.MONGO_URI);
 
   if (!uri) {
     console.warn("MONGO_URI missing. Using in-memory MongoDB fallback.");
